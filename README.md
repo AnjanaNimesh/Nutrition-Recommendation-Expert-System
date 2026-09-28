@@ -34,7 +34,6 @@ This project implements a rule-based expert system for general nutrition recomme
 - web/style.css - layout and styling
 - web/script.js - validation and communication logic
 - tests/test_cases.pl - Prolog unit tests
-- report/knowledge_engineering.md - domain reasoning description
 
 ## Requirements
 Install SWI-Prolog from the official project website or package manager.
@@ -71,18 +70,3 @@ Run the Prolog test suite with:
 
 swipl -q -s tests/test_cases.pl
 
-## Knowledge Engineering
-The system uses domain-specific facts and rules created from general nutrition guidance. These are expressed in Prolog so the final recommendation is a property of inference rather than hardcoded JavaScript.
-
-## Limitations
-This is an educational rule-based system designed for university demonstration. It does not diagnose disease or replace a medical professional.
-
-## Knowledge Sources
-The knowledge base is intentionally based on general evidence-based nutrition principles from public-health and educational sources, including:
-- WHO nutrition guidance
-- USDA Dietary Guidelines
-- Harvard T.H. Chan School of Public Health
-- NHS Eatwell guidance
-- recognized nutrition textbooks and peer-reviewed nutrition literature
-
-Specific numerical values such as BMI thresholds and the general Mifflin-St Jeor style formula are educational approximations and are not individualized clinical advice.
