@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutrition Recommendation Expert System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Nutrition Recommendation Expert System</h1>
+        <p>An explainable rule-based expert system for general nutrition recommendations.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel form-panel">
+        <h2>User Information</h2>
+        <form id="nutrition-form">
+          <div class="grid">
+            <label>
+              Age
+              <input type="number" id="age" min="10" max="120" required />
+            </label>
+            <label>
+              Gender
+              <select id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </label>
+            <label>
+              Height (cm)
+              <input type="number" id="height" min="100" max="250" required />
+            </label>
+            <label>
+              Weight (kg)
+              <input type="number" id="weight" min="30" max="220" required />
+            </label>
+            <label>
+              Activity Level
+              <select id="activity" required>
+                <option value="sedentary">Sedentary</option>
+                <option value="light">Light</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="active">Active</option>
+                <option value="very_active">Very Active</option>
+              </select>
+            </label>
+            <label>
+              Goal
+              <select id="goal" required>
+                <option value="weight_loss">Weight Loss</option>
+                <option value="weight_maintenance">Weight Maintenance</option>
+                <option value="weight_gain">Weight Gain</option>
+                <option value="healthy_eating">Healthy Eating</option>
+              </select>
+            </label>
+            <label>
+              Dietary Preference
+              <select id="diet" required>
+                <option value="omnivore">Omnivore</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="pescatarian">Pescatarian</option>
+              </select>
+            </label>
+            <label>
+              Number of Meals
+              <select id="meals" required>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <label>
+              Low-sodium preference
+              <select id="lowSodium" required>
+                <option value="false" selected>No</option>
+                <option value="true">Yes</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Generate Recommendation</button>
+          </div>
+        </form>
+        <div id="error-box" class="error-box hidden"></div>
+      </section>
+
+      <section class="panel results-panel hidden" id="results-panel">
+        <h2>Recommendation Summary</h2>
+        <div class="summary-grid">
+          <article class="card">
+            <h3>BMI</h3>
+            <p id="bmi-value">-</p>
+            <p id="bmi-category">-</p>
+          </article>
+          <article class="card">
+            <h3>Energy Requirement</h3>
+            <p id="bmr-value">-</p>
+            <p id="calorie-value">-</p>
+          </article>
+          <article class="card large">
+            <h3>Recommended Diet</h3>
+            <p id="overall-recommendation">-</p>
+          </article>
+        </div>
+
+        <div class="details-grid">
+          <article class="card">
+            <h3>Recommended Foods</h3>
+            <ul id="foods-list"></ul>
+          </article>
+          <article class="card">
+            <h3>Foods to Limit</h3>
+            <ul id="limit-list"></ul>
+          </article>
+          <article class="card">
+            <h3>Meal Structure</h3>
+            <ul id="meal-list"></ul>
+          </article>
+          <article class="card">
+            <h3>Hydration</h3>
+            <p id="hydration-value"></p>
+          </article>
+          <article class="card">
+            <h3>Macronutrients</h3>
+            <ul id="macro-list"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="explanation-panel">
+        <h2>How did the system reach this recommendation?</h2>
+        <div class="tabs">
+          <button type="button" class="tab-button active" data-tab="forward">Forward Chaining</button>
+          <button type="button" class="tab-button" data-tab="backward">Backward Chaining</button>
+          <button type="button" class="tab-button" data-tab="explain">Explanation</button>
+        </div>
+
+        <div class="tab-content active" id="forward-tab">
+          <ol id="forward-list"></ol>
+        </div>
+        <div class="tab-content" id="backward-tab">
+          <ol id="backward-list"></ol>
+        </div>
+        <div class="tab-content" id="explain-tab">
+          <ol id="explain-list"></ol>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
